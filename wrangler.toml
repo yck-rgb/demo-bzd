@@ -1,10 +1,11 @@
-name = "demo-bzd"
+name = "demo-bzd"  # 项目名称（可自定义）
 compatibility_date = "2024-05-01"
 
-# 替换为你的 KV 命名空间 ID
+# 仅保留 Pages 配置
+[pages]
+bucket = "./"  # 静态文件目录（根目录）
+
+# 如果有 KV，按以下格式添加（需先创建 KV 命名空间）
 kv_namespaces = [
   { binding = "USER_DATA", id = "4f47c36e763b4d14baee94137fab831e" }
 ]
-
-[pages]
-bucket = "./"
