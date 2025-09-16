@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>姓名保存器</title>
+</head>
+<body>
+    <h1>你的姓名存档</h1>
+    <input type="text" id="nameInput" placeholder="输入姓名">
+    <button onclick="saveName()">保存</button>
+    <p id="savedName"></p>
+
+    <script>
+        // 从KV加载已保存的姓名
+        async function loadName() {
+            const response = await fetch('/api/get-name');
+            const data = await response.json();
+            if (data.name) {
+                document.getElementById('savedName').textContent = `已保存的姓名：${data.name}`;
+            }
+        }
+
+        // 保存姓名到KV
+        async function saveName() {
+            const name = document.getElementById('nameInput').value;
+            await fetch('/api/save-name', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name })
+            });
+            loadName(); // 重新加载显示
+        }
+
+        // 页面加载时读取
+        loadName();
+    </script>
+</body>
+</html>

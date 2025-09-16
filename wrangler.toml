@@ -1,0 +1,10 @@
+name = "demo-bzd"
+compatibility_date = "2024-05-01"
+
+# 替换为你的 KV 命名空间 ID
+kv_namespaces = [
+  { binding = "USER_DATA", id = "4f47c36e763b4d14baee94137fab831e" }
+]
+
+[pages]
+bucket = "./"
